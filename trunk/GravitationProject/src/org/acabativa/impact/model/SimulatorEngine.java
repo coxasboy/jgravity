@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.acabativa.impact.model.util.Point;
+import org.acabativa.impact.model.util.Vector2D;
 import org.apache.log4j.Logger;
 
 public class SimulatorEngine {

@@ -2,6 +2,12 @@ package org.acabativa.impact.model;
 
 
 
+import org.acabativa.impact.model.forces.AtractiveForce;
+import org.acabativa.impact.model.forces.ForceStrategy;
+import org.acabativa.impact.model.forces.NeutronForce;
+import org.acabativa.impact.model.forces.SpringDistanceForce;
+import org.acabativa.impact.model.util.Point;
+import org.acabativa.impact.model.util.Vector2D;
 import org.apache.log4j.Logger;
 
 public class Particle implements Element{
@@ -19,24 +25,21 @@ public class Particle implements Element{
 	public final int id; 	
 		
 	public Particle(Vector2D velocity, double radius, double mass) {
-		super();
-		this.position = new Point();
-		this.velocity = velocity;
-		this.radius = radius;
-		this.mass = mass;
-		this.id = particlesCounter++;
-		this.fStrategy = new AtractiveForce();
+		this(velocity, new Point(), radius, mass, new NeutronForce());		
+	}
+	
+	public Particle(Vector2D velocity, Point position, double radius, double mass) {
+		this(velocity, position, radius, mass, new NeutronForce());		
 	}
 		
-	public Particle(Vector2D velocity, Point position, double radius,
-			double mass) {
+	public Particle(Vector2D velocity, Point position, double radius, double mass, ForceStrategy strategy) {
 		super();
 		this.velocity = velocity;
 		this.position = position;
 		this.radius = radius;
 		this.mass = mass;
 		this.id = particlesCounter++;
-		this.fStrategy = new AtractiveForce();
+		this.fStrategy = strategy;
 	}
 
 	public Vector2D getVelocity() {

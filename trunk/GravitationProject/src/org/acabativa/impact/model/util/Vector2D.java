@@ -1,4 +1,4 @@
-package org.acabativa.impact.model;
+package org.acabativa.impact.model.util;
 
 import org.apache.commons.math.geometry.Vector3D;
 

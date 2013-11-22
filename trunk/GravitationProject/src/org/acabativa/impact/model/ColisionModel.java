@@ -3,6 +3,10 @@ package org.acabativa.impact.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.acabativa.impact.model.forces.ForceStrategy;
+import org.acabativa.impact.model.forces.SpringDistanceForce;
+import org.acabativa.impact.model.util.Point;
+import org.acabativa.impact.model.util.Vector2D;
 import org.acabativa.impact.util.Observable;
 import org.acabativa.impact.util.Observer;
 import org.apache.log4j.Logger;
@@ -30,53 +34,60 @@ public class ColisionModel implements Runnable, Observable{
 	}
 	
 	public void populateModel(){
-		Particle particle = null;
+		//Particle particle = null;
 //		for (int i = 0; i < 900; i+=100) {
 //			addNewSuperStableParticle(i);
 //		}
 		
 //		addNewSuperStableParticle(400);
-		particle = new Particle(
+		Particle particleOne = new Particle(
 				new Vector2D(0, +0.03), 
 				new Point(400,400),
 				100, 
 				1000000);	
-		engine.addParticles(particle);
 		
-		particle = new Particle(
+		
+		Particle particleTwo = new Particle(
 				new Vector2D(-0.12, 0), 
 				new Point(400,700),
 				20, 
 				20000);	
-		engine.addParticles(particle);
+		ForceStrategy strategyOne = new SpringDistanceForce(particleOne, particleTwo);
+		ForceStrategy strategyTwo = new SpringDistanceForce(particleTwo, particleOne);
 		
-		particle = new Particle(
-				new Vector2D(-0.14, 0), 
-				new Point(400,850),
-				5, 
-				5000);	
-		engine.addParticles(particle);
+		particleOne.setfStrategy(strategyOne);
+		particleTwo.setfStrategy(strategyTwo);
 		
-		particle = new Particle(
-				new Vector2D(+0.12, 0), 
-				new Point(400,1000),
-				10, 
-				10000);	
-		engine.addParticles(particle);
+		engine.addParticles(particleOne);
+		engine.addParticles(particleTwo);
 		
-		particle = new Particle(
-				new Vector2D(0, -0.05), 
-				new Point(1200,1200),
-				70, 
-				700000);	
-		engine.addParticles(particle);
-		
-		particle = new Particle(
-				new Vector2D(0, +0.11), 
-				new Point(0,0),
-				70, 
-				700000);	
-		engine.addParticles(particle);
+//		particle = new Particle(
+//				new Vector2D(-0.14, 0), 
+//				new Point(400,850),
+//				5, 
+//				5000);	
+//		engine.addParticles(particle);
+//		
+//		particle = new Particle(
+//				new Vector2D(+0.12, 0), 
+//				new Point(400,1000),
+//				10, 
+//				10000);	
+//		engine.addParticles(particle);
+//		
+//		particle = new Particle(
+//				new Vector2D(0, -0.05), 
+//				new Point(1200,1200),
+//				70, 
+//				700000);	
+//		engine.addParticles(particle);
+//		
+//		particle = new Particle(
+//				new Vector2D(0, +0.11), 
+//				new Point(0,0),
+//				70, 
+//				700000);	
+//		engine.addParticles(particle);
 		
 //		particle = new Particle(
 //				new Vector2D(0, +0.12), 
@@ -125,7 +136,7 @@ public class ColisionModel implements Runnable, Observable{
 //				logger.info("Model Clock: " + clock);
 				long startProcessAt = System.currentTimeMillis();
 				engine.iterateAll();
-//				engine.changeStatesAll();
+				engine.changeStatesAll();
 				engine.changeAllVelocity();
 				engine.changeAllForce();
 				

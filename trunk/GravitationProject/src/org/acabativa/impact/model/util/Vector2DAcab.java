@@ -1,4 +1,5 @@
-package org.acabativa.impact.model;
+package org.acabativa.impact.model.util;
+
 
 public class Vector2DAcab {
 
