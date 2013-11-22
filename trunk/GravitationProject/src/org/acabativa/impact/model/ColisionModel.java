@@ -41,17 +41,24 @@ public class ColisionModel implements Runnable, Observable{
 		
 //		addNewSuperStableParticle(400);
 		Particle particleOne = new Particle(
-				new Vector2D(0.0, -0.16), 
+				new Vector2D(0.0, -0.0), 
 				new Point(400,400),
 				100, 
 				1000000);	
 		
 		
 		Particle particleTwo = new Particle(
-				new Vector2D(0.28, 0), 
+				new Vector2D(0.0, 0), 
 				new Point(400,900),
 				20, 
-				20000);	
+				2000000);	
+		
+		Particle particleThree = new Particle(
+				new Vector2D(+0.9, 0), 
+				new Point(0,400),
+				50, 
+				2000000);	
+		
 		ForceStrategy strategyOne = new SpringDistanceForce(particleOne, particleTwo);
 		ForceStrategy strategyTwo = new SpringDistanceForce(particleTwo, particleOne);
 		
@@ -60,6 +67,7 @@ public class ColisionModel implements Runnable, Observable{
 		
 		engine.addParticles(particleOne);
 		engine.addParticles(particleTwo);
+		engine.addParticles(particleThree);
 		
 //		particle = new Particle(
 //				new Vector2D(-0.14, 0), 

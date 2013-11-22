@@ -5,7 +5,7 @@ import org.acabativa.impact.model.util.Vector2D;
 
 public class SpringDistanceForce implements ForceStrategy{
 
-	private double k = 5;
+	private double k = 8;
 	private double restPosition = 559;
 	
 	private Particle particleOne;
@@ -19,7 +19,7 @@ public class SpringDistanceForce implements ForceStrategy{
 	@Override
 	public Vector2D getForce(Particle reference, Particle particle) {
 		if(!areThoseMyParticles(reference, particle)){
-			System.out.println("Not my particles!!");
+			//System.out.println("Not my particles!!");
 			return new Vector2D(0,0);
 		}
 		double catetoAdjacente = 0; 
@@ -50,11 +50,11 @@ public class SpringDistanceForce implements ForceStrategy{
 		
 		Vector2D normalized = new Vector2D(catetoAdjacente, catetoOposto).normalize();
 		
-		System.out.println("Coeficiente: " + coeficient);
+		//System.out.println("Coeficiente: " + coeficient);
 		
 		normalized = normalized.scalarMultiply(coeficient);
 		
-		System.out.println("Vector: " + normalized);
+		//System.out.println("Vector: " + normalized);
 		
 		return normalized;
 		
