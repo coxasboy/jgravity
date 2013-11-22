@@ -5,7 +5,7 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 
 import org.acabativa.impact.model.Particle;
-import org.acabativa.impact.model.Point;
+import org.acabativa.impact.model.util.Point;
 
 public class VoidParticleDrawer extends ParticlesDrawer{
 

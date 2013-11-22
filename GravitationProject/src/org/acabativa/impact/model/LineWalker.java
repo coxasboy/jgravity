@@ -145,7 +145,7 @@ public class LineWalker {
 		return hipotenusa;
 	}
 	
-	public static Double getHipotenusa(org.acabativa.impact.model.Point start, org.acabativa.impact.model.Point end){
+	public static Double getHipotenusa(org.acabativa.impact.model.util.Point start, org.acabativa.impact.model.util.Point end){
 		double catetoAdjacente = 0; 
 		
 		catetoAdjacente = -start.getX()+end.getX();

@@ -1,4 +1,7 @@
-package org.acabativa.impact.model;
+package org.acabativa.impact.model.forces;
+
+import org.acabativa.impact.model.Particle;
+import org.acabativa.impact.model.util.Vector2D;
 
 public interface ForceStrategy {
 

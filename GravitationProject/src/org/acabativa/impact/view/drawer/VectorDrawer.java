@@ -2,7 +2,7 @@ package org.acabativa.impact.view.drawer;
 
 import java.awt.Graphics2D;
 
-import org.acabativa.impact.model.Vector2D;
+import org.acabativa.impact.model.util.Vector2D;
 
 public class VectorDrawer {
 

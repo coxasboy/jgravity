@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.acabativa.impact.model.Particle;
-import org.acabativa.impact.model.Point;
+import org.acabativa.impact.model.util.Point;
 
 public class ParticlesDrawer {
 	Color blue = Color.lightGray;
