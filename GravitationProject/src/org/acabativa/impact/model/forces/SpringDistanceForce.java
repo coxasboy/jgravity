@@ -5,8 +5,8 @@ import org.acabativa.impact.model.util.Vector2D;
 
 public class SpringDistanceForce implements ForceStrategy{
 
-	private double k = 0.01;
-	private double restPosition = 299;
+	private double k = 5;
+	private double restPosition = 559;
 	
 	private Particle particleOne;
 	private Particle particleTwo;
@@ -31,26 +31,32 @@ public class SpringDistanceForce implements ForceStrategy{
 		catetoOposto = -reference.getPosition().getY()+particle.getPosition().getY();
 		
 		double distance = getDistance(reference, particle);
-		System.out.println("Distance: " + distance);
 		
 		
-		double coeficient = (distance-restPosition) * k;
-		System.out.println("Coeficiente: " + coeficient);
+		
+		double coeficient = ((distance-restPosition)) * k;
+		
 		
 		if(Double.compare(distance, restPosition)==0){
 			return new Vector2D(0,0);
 		}
-		else if(Double.compare(distance, restPosition)>0){
-			coeficient = coeficient*(+1);
-		}
-		else{
-			coeficient = coeficient*(-1);
-		}
+//		else if(Double.compare(distance, restPosition)>0){
+//			coeficient = coeficient*(+1);
+//		}
+//		else{
+//			coeficient = coeficient*(-1);
+//		}
 				
 		
 		Vector2D normalized = new Vector2D(catetoAdjacente, catetoOposto).normalize();
 		
-		return normalized.scalarMultiply(coeficient);
+		System.out.println("Coeficiente: " + coeficient);
+		
+		normalized = normalized.scalarMultiply(coeficient);
+		
+		System.out.println("Vector: " + normalized);
+		
+		return normalized;
 		
 	}
 	
